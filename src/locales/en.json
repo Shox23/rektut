@@ -1,0 +1,43 @@
+{
+  "loginPage": {
+    "login": {
+      "mainTitle": "Welcome back!",
+      "mainPhoneLabel": "Mail/phone number",
+      "passwordLabel": "Password",
+      "mainButtonTitle": "Sign up",
+      "or": "Or",
+      "loginWith": "Login with",
+      "forgot": "Forgot your password?",
+      "firstTimeHere": "First time here?",
+      "signUp": "Sign up"
+    },
+    "recover": {
+      "mainTitle": "Recover password",
+      "mainPhoneLabel": "Mail/phone number",
+      "mainButtonTitle": "Restore",
+      "remember": "Remember your password?",
+      "login": "Log in",
+      "back": "Back"
+    },
+    "signUp": {
+      "mainTitle": "Sign up",
+      "mainPhoneLabel": "Mail/phone number",
+      "mainButtonTitle": "Sign up",
+      "back": "Back",
+      "or": "Or",
+      "loginWith": "Login with",
+      "login": "Log in",
+      "registered": "Already registered?"
+    }
+  },
+  "navbar": {
+    "mainButtonText": "Add advertisement",
+    "mainButtonTextMobile": "Create ad",
+    "home": "Home",
+    "about": "About Us",
+    "advertisement": "Advertisement",
+    "reviews": "Reviews",
+    "address": "Address"
+  },
+  "main": "Main"
+}
