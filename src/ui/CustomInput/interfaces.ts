@@ -1,12 +1,16 @@
 export interface CustomInputProps {
+  noneShadow?: boolean;
+  bordered?: boolean;
   placeholder: string;
   value?: string;
   type?: "text" | "password" | "number" | "tel" | "time";
   selected?: boolean;
+  modeSwitcher?: boolean;
   error?: boolean;
   supporting_text?: string;
   disabled?: boolean;
   icon?: string;
+  trailing?: string;
   inputmode?:
     | "text"
     | "tel"
@@ -28,4 +32,5 @@ export interface CustomInputEmits {
   (e: "onFocus"): void;
   (e: "onBlur"): void;
   (e: "onIconClick"): void;
+  (e: "updateData", value: string): void;
 }

@@ -2,6 +2,7 @@
   --primary-font: "SF Pro Display", sans-serif;
   --second-font: "Poppins", sans-serif;
   --third-font: "Inter", sans-serif;
+
   --primary-color: #ffffff;
   --second-color: #e6e6e6;
   --third-color: #6eb5ec;
@@ -9,4 +10,9 @@
   --brand-color: #0863e7;
   --additional-color: #595959;
   --blurred-color: rgba(89, 89, 89, 0.5);
+
+  --primary-filter: brightness(0) saturate(100%) invert(100%) sepia(6%)
+    saturate(24%) hue-rotate(142deg) brightness(105%) contrast(107%);
+  --brand-filter: brightness(0) saturate(100%) invert(23%) sepia(92%)
+    saturate(2261%) hue-rotate(209deg) brightness(98%) contrast(98%);
 }

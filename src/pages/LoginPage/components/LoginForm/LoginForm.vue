@@ -11,6 +11,11 @@
         />
         <CustomInput
           icon="lock.svg"
+          :mode-switcher="true"
+          v-model="passwordInputValue"
+          :type="inputPassword ? 'text' : 'password'"
+          @onIconClick="inputPassword = !inputPassword"
+          @updateData="updateInputData"
           :placeholder="$t('loginPage.login.passwordLabel')"
         />
         <FilledButton :bigger="true">
@@ -64,12 +69,19 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { useLoginStore } from "../../store/loginStore";
 import CustomInput from "../../../../ui/CustomInput/CustomInput.vue";
 import FilledButton from "../../../../ui/FilledButton/FilledButton.vue";
 import WhiteButton from "../../../../ui/WhiteButton/WhiteButton.vue";
 
+const inputPassword = ref<boolean>(false);
+const passwordInputValue = ref<string>("");
 const loginStore = useLoginStore();
+
+const updateInputData = (val: string) => {
+  passwordInputValue.value = val;
+};
 </script>
 
 <style lang="scss">

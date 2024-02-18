@@ -37,7 +37,58 @@
     "about": "About Us",
     "advertisement": "Advertisement",
     "reviews": "Reviews",
-    "address": "Address"
+    "address": "Address",
+    "menu": {
+      "btnText": "Create ad"
+    }
   },
-  "main": "Main"
+  "filterBlock": {
+    "search": "Search",
+    "inputPlaceholder": "Work",
+    "findAWord": "Find a work",
+    "workType": "Work and part-time work",
+    "workCity": "Choose the city",
+    "btnTitle": "Show ads"
+  },
+  "main": {
+    "mainTitle": "Your best notice board in Turkey",
+    "mainSubtitle": "Найдётся всё",
+    "servicesTilte": "Popular services",
+    "servicesLinkTitle": "Go to business directory",
+    "newBusinesses": "New businesses",
+    "newBusinessesLinkTitle": "Show more",
+    "advertisementTitleFirstPart": "Do you want to place ",
+    "advertisementTitleSecondPart": "your advertisement?",
+    "advertisementBtnTitle": "Create an advertisement?",
+    "aboutTitleFirstPart": "About",
+    "aboutTitleSecondPart": "Us",
+    "aboutText": "",
+    "aboutBtnTitle": "Our team",
+    "companyTitleFirstPart": "Name",
+    "companyTitleSecondPart": "company",
+    "companyText": ""
+  },
+  "productCard": {
+    "outlineBtnTitle": "Learn more",
+    "filledBtnTitle": "Save",
+    "districtTitle": "District"
+  },
+  "footer": {
+    "information": "Information",
+    "requisites": "Requisites",
+    "aboutUs": "About us",
+    "submit": "Submit an article",
+    "faq": "FAQ",
+    "reviews": "Reviews",
+    "team": "Our team",
+    "work": "Work",
+    "housing": "Housing",
+    "catalogue": "Catalogue of Businesses",
+    "catalogueTitle": "Catalogue",
+    "events": "Events",
+    "health": "Health",
+    "contact": "Contact us",
+    "contacts": "Contacts",
+    "mainText": "Ads service No. 1 in the Turkey. Here you will find what you were looking for! Work, housing, events and catalog of businesses and services throughout whole America for ours!"
+  }
 }

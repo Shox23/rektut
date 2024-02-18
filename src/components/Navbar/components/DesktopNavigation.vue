@@ -1,7 +1,7 @@
 <template>
   <nav class="desktop-nav">
     <div>
-      <FilledButton icon="plus.svg">
+      <FilledButton :font-default="true" icon="plus-white.svg">
         <template #text>
           {{ $t("navbar.mainButtonText") }}
         </template>
@@ -9,36 +9,34 @@
     </div>
 
     <ul class="desktop-nav__menu">
-      <li v-for="item in menuItems" :key="item.link">
-        <router-link class="desktop-nav__item" :to="item.link" v-if="!item.src">
+      <li v-for="(item, idx) in menuItems" :key="item.link">
+        <router-link
+          class="desktop-nav__item"
+          :class="{ white: idx < 2 && route.fullPath === '/' }"
+          :to="item.link"
+          v-if="!item.src"
+        >
           {{ $t(`${item.title}`) }}
         </router-link>
-        <router-link :to="item.link" v-else>
-          <img :src="item.src" alt="icon" />
+        <router-link class="desktop-nav__logo" :to="item.link" v-else>
+          <img
+            :src="`${route.fullPath === '/' ? item.src : item.externalScr}`"
+            alt="icon"
+          />
         </router-link>
       </li>
     </ul>
 
-    <div class="desktop-nav__info">
-      <div class="desktop-nav__address">
-        <img src="/icons/location.svg" alt="icon" />
-        <p>
-          {{ $t("navbar.address") }}
-        </p>
-      </div>
-
-      <button class="desktop-nav__btn">En</button>
-
-      <router-link class="desktop-nav__profile" to="/profile">
-        <img src="/icons/user_black.svg" alt="icon" />
-      </router-link>
-    </div>
+    <NavbarRightBlock />
   </nav>
 </template>
 
 <script setup lang="ts">
+import NavbarRightBlock from "./NavbarRightBlock.vue";
 import FilledButton from "../../../ui/FilledButton/FilledButton.vue";
+import { useRoute } from "vue-router";
 
+const route = useRoute();
 const menuItems = [
   {
     link: "/",
@@ -50,7 +48,8 @@ const menuItems = [
   },
   {
     link: "/",
-    src: "/icons/navigation/white_logo_desktop.png",
+    src: "/icons/navigation/white_logo_desktop.svg",
+    externalScr: "/icons/navigation/logo_sub.svg",
   },
   {
     link: "/advertisement",
@@ -64,7 +63,10 @@ const menuItems = [
 </script>
 
 <style lang="scss" scoped>
+@import "../../../assets/styles/mixins/grid.scss";
 .desktop-nav {
+  position: relative;
+  padding: 20px;
   height: 100%;
   width: 100%;
   max-width: 1100px;
@@ -77,17 +79,26 @@ const menuItems = [
     display: flex;
     align-items: center;
     gap: 30px;
+
+    @media (max-width: 1024px) {
+      gap: 10px;
+    }
   }
 
   &__item {
     font-weight: 600;
     letter-spacing: 0.2px;
+    @include adaptiv-fontlg(16, 15);
+
+    &.white {
+      color: var(--primary-color);
+    }
   }
 
   &__info {
     display: flex;
     align-items: center;
-    gap: 10px;
+    @include adaptivGaplg(10, 6);
   }
 
   &__address {

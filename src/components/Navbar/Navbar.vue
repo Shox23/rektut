@@ -22,7 +22,6 @@ const adaptiveStore = useAdaptiveStore();
 
 <style lang="scss" scoped>
 .navbar {
-  height: 50px;
   &.alt {
     position: absolute;
     width: 100%;

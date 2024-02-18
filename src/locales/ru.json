@@ -39,5 +39,35 @@
     "reviews": "Reviews",
     "address": "Address"
   },
-  "main": "Главная"
+  "filter-block": {
+    "search": "Search",
+    "inputPlaceholder": "Work",
+    "findAWord": "Find a work",
+    "workType": "Work and part-time work",
+    "workCity": "Choose the city",
+    "btnTitle": "Show ads"
+  },
+  "main": {
+    "mainTitle": "Your best notice board in Turkey",
+    "mainSubtitle": "Найдётся всё",
+    "servicesTilte": "Popular services",
+    "servicesLinkTitle": "Go to business directory",
+    "newBusinesses": "New businesses",
+    "newBusinessesLinkTitle": "Show more",
+    "advertisementTitleFirstPart": "Do you want to place ",
+    "advertisementTitleSecontPart": "your advertisement?",
+    "advertisementBtnTitle": "Create an advertisement?",
+    "aboutTitleFirstPart": "About",
+    "aboutTitleSecondPart": "Us",
+    "aboutText": "",
+    "aboutBtnTitle": "Learn more",
+    "companyTitleFirstPart": "Name",
+    "companyTitleSecondPart": "company",
+    "companyText": ""
+  },
+  "productCard": {
+    "outlineBtnTitle": "Learn more",
+    "filledBtnTitle": "Save",
+    "districtTitle": "District"
+  }
 }
