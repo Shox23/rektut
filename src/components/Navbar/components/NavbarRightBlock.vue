@@ -39,7 +39,7 @@ import { useAdaptiveStore } from "../../../store/adaptive";
 import Modal from "../../../ui/Modal/Modal.vue";
 
 const adaptiveStore = useAdaptiveStore();
-const modalOpen = ref<boolean>(true);
+const modalOpen = ref<boolean>(false);
 </script>
 
 <style lang="scss" scoped>
