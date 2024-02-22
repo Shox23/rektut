@@ -90,5 +90,59 @@
     "contact": "Contact us",
     "contacts": "Contacts",
     "mainText": "Ads service No. 1 in the Turkey. Here you will find what you were looking for! Work, housing, events and catalog of businesses and services throughout whole America for ours!"
+  },
+  "ourTeam": {
+    "pageTitle": "Our team",
+    "pageLinkText": "Back",
+    "titleFirst": "Our",
+    "titleSecond": "Team",
+    "btnTitle": "Our team",
+    "meet": "Meet our team",
+    "lowerTitleFirst": "We strive to provide",
+    "lowerTitleSecond": "the best service for finding ",
+    "lowerTitleThird": " work, housing and services!"
+  },
+  "profilePage": {
+    "personalInfoTitle": "Tell us about yourself",
+    "released": "Released",
+    "employer": "Employer",
+    "pageTitle": "Personal data",
+    "socialMedia": "Social Media",
+    "website": "Your web-site",
+    "backLink": "Back",
+    "namePlaceholder": "Your name",
+    "numberPlaceholder": "Number phone",
+    "emailPlaceholder": "E-mail",
+    "agreement": "I agree with Terms of Use and receiving SMS-mailings about novelty and promotions from Rektut.tu",
+    "filledBtnText": "Save changes",
+    "outlinedBtnText": "Password change",
+    "imageReqs": "To improve image quality, choose high-quality images in ratio of 1:1 and no larger than 10mb. Format: Jpeg, png"
+  },
+  "notFound": {
+    "title": "Oh we don't have such a page",
+    "text": "Perhaps you wrote something wrong in address bar or the page has been moved",
+    "notify": "Go to one of the sections"
+  },
+  "aboutUs": {
+    "mainTitle": "About us",
+    "infoTitleFirst": "Our",
+    "infoTitle": "How we became who we are today",
+    "infoSubtitle": "From a small team to a market leader",
+    "infoTitleSecond": "Story",
+    "mainBtnText": "Our team",
+    "listItemBirth": "The birth of an idea",
+    "listItemStart": "Start platform",
+    "listItemAchivement": "First achivement",
+    "listItemToday": "Today",
+    "factsTitle": "Some facts about us",
+    "factsSubtitle": "We ary proud of where BAZAR.club is today. And our achivements.",
+    "factsCarouselTitle": "Feedbacks from our users",
+    "viewAll": "View All",
+    "mainText": "Rektut.tu is a bulletin board, a catalog of services and businesses, and an information portal for immigrants at the same time. We become the first friend for immigrants in the USA: we help them find work and housing, deal with household issues, talk about the most interesting places and the most important news."
+  },
+  "languageSettings":{
+    "mainTitle": "Interface language",
+    "secondTitle": "Choose the city",
+    "btnText": "Apply"
   }
 }

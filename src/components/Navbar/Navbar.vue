@@ -1,5 +1,8 @@
 <template>
-  <header class="navbar" :class="{ alt: route.fullPath === '/' }">
+  <header
+    class="navbar"
+    :class="{ alt: route.fullPath === '/' || route.fullPath === '/about' }"
+  >
     <MobileNavigation
       v-if="adaptiveStore.screenState === AdaptiveState.mobile"
     />

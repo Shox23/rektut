@@ -1,12 +1,16 @@
 <template>
-  <button class="outlined-btn">
+  <button class="outlined-btn" :class="[{ fullWidth }, { profilePage }]">
     <span class="outlined-btn__text">
       <slot name="text" />
     </span>
   </button>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { OutlinedButtonProps } from "./interfaces";
+
+defineProps<OutlinedButtonProps>();
+</script>
 
 <style scoped lang="scss">
 .outlined-btn {
@@ -21,5 +25,15 @@
   cursor: pointer;
   font-size: 14px;
   color: var(--additional-color);
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  &.profilePage {
+    font-weight: 600;
+    font-size: 16px;
+    padding: 15px 32px;
+  }
 }
 </style>

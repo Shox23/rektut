@@ -7,6 +7,8 @@ export interface FilledButtonProps {
   fullWidth?: boolean;
   cardBtn?: boolean;
   fullHeight?: boolean;
+  profilePage?: boolean;
+  mainSection?: boolean;
 }
 
 export interface FilledButtonEmits {

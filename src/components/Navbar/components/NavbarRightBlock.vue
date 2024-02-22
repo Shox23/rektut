@@ -24,14 +24,22 @@
     <router-link class="right-block__profile" to="/profile">
       <img src="/icons/navigation/nav_user.svg" alt="icon" />
     </router-link>
+    <Modal
+      :is-open="modalOpen"
+      :header-title="$t('languageSettings.mainTitle')"
+      :body-title="$t('languageSettings.secondTitle')"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import AdaptiveState from "../../../helpers/enums/adaptiveEnum";
 import { useAdaptiveStore } from "../../../store/adaptive";
+import Modal from "../../../ui/Modal/Modal.vue";
 
 const adaptiveStore = useAdaptiveStore();
+const modalOpen = ref<boolean>(true);
 </script>
 
 <style lang="scss" scoped>

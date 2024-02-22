@@ -36,6 +36,32 @@ li {
   flex-direction: column;
 }
 
+.global-title {
+  line-height: 75%;
+  @include adaptiv-fontlg(36, 24);
+  font-size: 36px;
+  font-weight: 700px;
+  color: var(--additional-color);
+
+  @media (max-width: 768px) {
+    @include adaptiv-fontmd(32, 20);
+  }
+
+  &.lower {
+    @include adaptiv-fontlg(32, 20);
+
+    @media (max-width: 768px) {
+      @include adaptiv-fontmd(32, 20);
+    }
+  }
+
+  &.mobile-lower {
+    @media (max-width: 768px) {
+      @include adaptiv-fontmd(32, 16);
+    }
+  }
+}
+
 .text-blue {
   font-family: var(--primary-font);
   font-weight: inherit;

@@ -23,7 +23,9 @@ export interface CustomInputProps {
     | undefined;
   autofocus?: boolean;
   readonly?: boolean;
+  colored?: boolean;
   maxlength?: number;
+  staticPadding?: boolean;
   // multiline?: boolean,
   // money?: boolean
 }

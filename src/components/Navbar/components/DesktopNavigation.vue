@@ -12,7 +12,11 @@
       <li v-for="(item, idx) in menuItems" :key="item.link">
         <router-link
           class="desktop-nav__item"
-          :class="{ white: idx < 2 && route.fullPath === '/' }"
+          :class="{
+            white:
+              idx < 2 &&
+              (route.fullPath === '/' || route.fullPath === '/about'),
+          }"
           :to="item.link"
           v-if="!item.src"
         >
@@ -20,7 +24,11 @@
         </router-link>
         <router-link class="desktop-nav__logo" :to="item.link" v-else>
           <img
-            :src="`${route.fullPath === '/' ? item.src : item.externalScr}`"
+            :src="`${
+              route.fullPath === '/' || route.fullPath === '/about'
+                ? item.src
+                : item.externalScr
+            }`"
             alt="icon"
           />
         </router-link>

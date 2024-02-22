@@ -1,7 +1,12 @@
 <template>
   <div
     class="custom-input"
-    :class="[{ none_shadow: noneShadow }, { bordered: bordered }]"
+    :class="[
+      { none_shadow: noneShadow },
+      { bordered },
+      { colored },
+      { staticPadding },
+    ]"
   >
     <span class="custom-input__icon" v-if="icon">
       <img :src="`/icons/${icon}`" alt="icon" />
@@ -55,7 +60,20 @@ const modelValue = defineModel();
   @include adaptivPaddinglg(25, 25, 25, 25, 20, 20, 16, 16);
   border-radius: 10px;
 
+  &.staticPadding {
+    padding: 20px 25px;
+
+    .custom-input__field {
+      font-size: 24px;
+    }
+  }
+
   &.none_shadow {
+    box-shadow: none;
+  }
+
+  &.colored {
+    background: #e6e6e6;
     box-shadow: none;
   }
 

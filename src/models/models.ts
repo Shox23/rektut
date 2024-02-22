@@ -22,3 +22,29 @@ export interface CardBlockProps {
   title: string;
   linkTitle: string;
 }
+
+export interface PageTitleProps {
+  title: string;
+  linkText?: string;
+  lower?: boolean;
+  mobileLower?: boolean
+  isCarousel?:boolean
+}
+
+export interface PageTitleEmits {
+  (e: "onClick"): void;
+  (e: "onBack"): void;
+  (e: "onNext"): void;
+}
+
+export interface HTMLInputEvent extends Event {
+  target: HTMLInputElement & EventTarget;
+}
+
+export interface DescriptionBlock {
+  date?: string;
+  title: string;
+  leading: string;
+  trailing: string;
+  wrapperFilled?: boolean;
+}

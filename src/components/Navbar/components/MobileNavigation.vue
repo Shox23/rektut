@@ -4,7 +4,7 @@
       <div class="mobile-nav__burger" @click="adaptiveStore.toggleMenu">
         <img
           :src="`${
-            route.fullPath === '/'
+            route.fullPath === '/' || route.fullPath === '/about'
               ? '/icons/navigation/burger-white.svg'
               : '/icons/navigation/burger.svg'
           }`"
@@ -15,7 +15,7 @@
         <router-link to="/">
           <img
             :src="`${
-              route.fullPath === '/'
+              route.fullPath === '/' || route.fullPath === '/about'
                 ? '/icons/navigation/white_logo_mobile.svg'
                 : '/icons/navigation/logo_sub.svg'
             }`"

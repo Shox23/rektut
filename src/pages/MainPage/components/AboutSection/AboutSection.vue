@@ -144,7 +144,7 @@ const adaptStore = useAdaptiveStore();
 
     @media (max-width: 768px) {
       width: 100%;
-      @include adaptivPaddingmd(30, 30, 30, 30, 10, 10, 10, 10);
+      @include adaptivPaddingmd(30, 30, 30, 30, 20, 20, 20, 20);
     }
   }
 

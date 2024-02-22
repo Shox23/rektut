@@ -5,9 +5,11 @@
       { bigger: bigger },
       { font_default: fontDefault },
       { on_nav: onNav },
-      { fullWidth: fullWidth },
-      { fullHeight: fullHeight },
-      { cardBtn: cardBtn },
+      { fullWidth },
+      { fullHeight },
+      { cardBtn },
+      { profilePage },
+      { mainSection },
     ]"
     v-ripple
   >
@@ -48,6 +50,25 @@ const emits = defineEmits<FilledButtonEmits>();
 
   &.fullWidth {
     width: 100%;
+  }
+
+  &.mainSection {
+    border-radius: 20px;
+    padding: 18px 30px;
+    font-size: 32px;
+    font-weight: 700;
+
+    @media (max-width: 768px) {
+      padding: 15px 25px;
+      @include adaptiv-fontmd(30, 16);
+      border-radius: 10px;
+    }
+  }
+
+  &.profilePage {
+    font-size: 16px;
+    padding: 15px 32px;
+    border: 1px solid var(--brand-color);
   }
 
   &.cardBtn {
