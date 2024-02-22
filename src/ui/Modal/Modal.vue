@@ -1,23 +1,42 @@
 <template>
   <Teleport to="body">
-    <Transition>
-      <div class="modal" v-if="isOpen">
-        <div class="modal__content">
+    <Transition name="modal">
+      <div class="modal" v-if="isOpen" @click="$emit('close')">
+        <div class="modal__content" @click.stop>
           <div class="modal__header">
             <div class="modal__header__one" v-if="!altHeader">
-              <PageTitle :title="headerTitle" />
-              <span class="modal__close">
-                <img src="/icons/close-circle.svg" alt="icon" />
-              </span>
+              <!-- <PageTitle :title="headerTitle" /> -->
+              <div class="modal__header__content">
+                <h3 class="modal__title">
+                  {{ headerTitle }}
+                </h3>
+                <button @click="$emit('close')" class="modal__close">
+                  <img src="/icons/close.svg" alt="icon" />
+                </button>
+              </div>
+              <slot name="headerItems" />
             </div>
             <div class="modal__header__two" v-else>
-              <PageTitle :title="headerTitle" />
+              <button @click="$emit('close')" class="modal__close">
+                <img src="/icons/close.svg" alt="icon" />
+              </button>
+              <h3 class="modal__title__alt">
+                {{ headerTitle }}
+              </h3>
             </div>
           </div>
-          <PageTitle :title="bodyTitle" />
+
+          <h3 class="modal__title" v-if="altBodyTitle">
+            {{ bodyTitle }}
+          </h3>
+
+          <h3 class="global-title" v-else>
+            {{ bodyTitle }}
+          </h3>
+
           <div class="modal__body">
             <div>
-              <slot />
+              <slot name="body" />
             </div>
           </div>
         </div>
@@ -27,13 +46,15 @@
 </template>
 
 <script setup lang="ts">
-import PageTitle from "../PageTitle/PageTitle.vue";
-import { ModalProps } from "./interfaces";
+import { ModalEmits, ModalProps } from "./interfaces";
 
 defineProps<ModalProps>();
+defineEmits<ModalEmits>();
 </script>
 
 <style lang="scss" scoped>
+@import "../../assets/styles/mixins/grid.scss";
+
 .modal {
   z-index: 30;
   position: absolute;
@@ -51,19 +72,54 @@ defineProps<ModalProps>();
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    gap: 30px;
     background: var(--primary-color);
+
+    @media (max-width: 768px) {
+      @include adaptivGapmd(30, 20);
+      @include adaptivPaddingmd(20, 20, 40, 40, 10, 10, 20, 20);
+    }
   }
 
-  &__header__one {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  &__header {
+    &__one {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+
+      @media (max-width: 768px) {
+        @include adaptivGapmd(20, 10);
+      }
+    }
+
+    &__content {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--additional-color);
+    line-height: 62%;
+
+    @media (max-width: 768px) {
+      @include adaptiv-fontmd(24, 18);
+    }
   }
 
   &__close {
-    width: 21px;
-    height: 21px;
+    background: none;
+    border: none;
+    outline: none;
+    height: 20px;
+    cursor: pointer;
+    width: 20px;
 
     img {
       width: 100%;

@@ -135,3 +135,22 @@ li {
   transition: height 100ms;
   overflow: hidden;
 }
+
+.modal-enter-active {
+  --transition-speed: 200ms;
+  transition: opacity 0.3s ease;
+}
+
+.modal-leave-active {
+  transition: opacity 0.3s ease, height 100ms;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+  height: 0;
+}
+
+.modal-leave-to {
+  height: auto;
+}

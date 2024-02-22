@@ -11,7 +11,7 @@
       </p>
     </div>
 
-    <button class="right-block__btn">En</button>
+    <button class="right-block__btn" @click="modalOpen = true">En</button>
 
     <router-link
       class="right-block__favourites"
@@ -25,10 +25,46 @@
       <img src="/icons/navigation/nav_user.svg" alt="icon" />
     </router-link>
     <Modal
+      @close="modalOpen = false"
       :is-open="modalOpen"
+      :alt-body-title="true"
       :header-title="$t('languageSettings.mainTitle')"
       :body-title="$t('languageSettings.secondTitle')"
-    />
+    >
+      <template #headerItems>
+        <ul class="right-block__languages">
+          <li
+            class="right-block__language"
+            v-for="item in currentLanguages"
+            :class="{ active: activeLang === item.key }"
+            :key="item.key"
+          >
+            {{ item.title }}
+          </li>
+        </ul>
+      </template>
+      <template #body>
+        <div class="right-block__modal">
+          <ul class="right-block__cities">
+            <li
+              class="right-block__city"
+              :class="{ active: activeCity === item }"
+              v-for="item in citiesList"
+              :key="item"
+            >
+              {{ item }}
+            </li>
+          </ul>
+          <div class="right-block__modal__btn">
+            <FilledButton>
+              <template #text>
+                {{ $t("languageSettings.btnText") }}
+              </template>
+            </FilledButton>
+          </div>
+        </div>
+      </template>
+    </Modal>
   </div>
 </template>
 
@@ -37,9 +73,50 @@ import { ref } from "vue";
 import AdaptiveState from "../../../helpers/enums/adaptiveEnum";
 import { useAdaptiveStore } from "../../../store/adaptive";
 import Modal from "../../../ui/Modal/Modal.vue";
+import FilledButton from "../../../ui/FilledButton/FilledButton.vue";
 
 const adaptiveStore = useAdaptiveStore();
 const modalOpen = ref<boolean>(false);
+const activeLang = ref<string>("en");
+const activeCity = ref<string>("Tashkent");
+
+const currentLanguages = [
+  {
+    key: "pol",
+    title: "Polish",
+  },
+  {
+    key: "en",
+    title: "English",
+  },
+  {
+    key: "tur",
+    title: "Turkish",
+  },
+  {
+    key: "ru",
+    title: "Russian",
+  },
+];
+
+const citiesList = [
+  "Istanbul",
+  "Ankara",
+  "Tashkent",
+  "Samarkand",
+  "Moscow",
+  "St-Petersburg",
+  "Warsaw",
+  "Krakow",
+  "London",
+  "Manchester",
+  "Berlin",
+  "Torino",
+  "Rome",
+  "Frankfurt",
+  "Geneve",
+  "Paris",
+];
 </script>
 
 <style lang="scss" scoped>
@@ -147,6 +224,81 @@ const modalOpen = ref<boolean>(false);
       @media (max-width: 425px) {
         font-size: 14px;
       }
+    }
+  }
+
+  &__cities {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    gap: 25px 30px;
+    padding: 0 0 20px;
+
+    @media (max-width: 640px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 375px) {
+      gap: 10px;
+    }
+  }
+
+  &__city {
+    color: var(--additional-color);
+    font-size: 24px;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      @include adaptiv-fontmd(24, 14);
+    }
+
+    &.active {
+      font-weight: 700;
+      color: var(--brand-color);
+    }
+  }
+
+  &__modal {
+    &__btn {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  &__languages {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    @media (max-width: 768px) {
+      gap: 10px;
+    }
+
+    @media (max-width: 335px) {
+      gap: 5px;
+    }
+  }
+
+  &__language {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--brand-color);
+    border: 1px solid var(--brand-color);
+    transition: 0.3s;
+
+    @media (max-width: 768px) {
+      @include adaptivPaddingmd(10, 10, 20, 20, 8, 8, 8, 8);
+      @include adaptiv-fontmd(20, 14);
+    }
+
+    &.active {
+      color: var(--primary-color);
+      background: var(--brand-color);
     }
   }
 }

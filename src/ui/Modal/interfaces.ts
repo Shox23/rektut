@@ -3,6 +3,9 @@ export interface ModalProps {
   bodyTitle: string;
   altHeader?: boolean;
   isOpen: boolean;
+  altBodyTitle?: boolean;
 }
 
-export interface ModalEmits {}
+export interface ModalEmits {
+  (e: "close"): void;
+}
