@@ -140,9 +140,17 @@
     "viewAll": "View All",
     "mainText": "Rektut.tu is a bulletin board, a catalog of services and businesses, and an information portal for immigrants at the same time. We become the first friend for immigrants in the USA: we help them find work and housing, deal with household issues, talk about the most interesting places and the most important news."
   },
-  "languageSettings":{
+  "languageSettings": {
     "mainTitle": "Interface language",
     "secondTitle": "Choose the city",
     "btnText": "Apply"
+  },
+  "answers": {
+    "pageTitle": "Answers to frequently asked questions about the BAZAR.club service",
+    "pageLinkText": "Back"
+  },
+  "favorites": {
+    "pageTitle": "My favorites",
+    "pageLinkText": "Back"
   }
 }

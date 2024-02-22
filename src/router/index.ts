@@ -45,6 +45,16 @@ const router = createRouter({
       component: () => import("../pages/AboutPage/index.vue"),
     },
     {
+      name: "Favorites",
+      path: "/favorites",
+      component: () => import("../pages/FavoritesPage/index.vue"),
+    },
+    {
+      name: "Answers",
+      path: "/faq",
+      component: () => import("../pages/AnswersPage/index.vue"),
+    },
+    {
       name: "NotFound",
       path: "/:pathMatch(.*)*",
       component: () => import("../pages/NotFound/index.vue"),
