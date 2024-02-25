@@ -49,7 +49,7 @@ const adaptStore = useAdaptiveStore();
 @import "../../../../assets/styles/mixins/grid.scss";
 .main-hero {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
 
   &__icon {

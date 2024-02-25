@@ -18,6 +18,7 @@
     <div class="app__content">
       <router-view />
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -29,6 +30,7 @@ import { useAdaptiveStore } from "./store/adaptive";
 import Navbar from "./components/Navbar/Navbar.vue";
 import MobileMenu from "./components/Navbar/components/MobileMenu.vue";
 import AdaptiveState from "./helpers/enums/adaptiveEnum";
+import Footer from "./components/Footer/Footer.vue";
 
 const route = useRoute();
 const langStore = useLanguageStore();

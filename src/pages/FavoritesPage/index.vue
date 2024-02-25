@@ -5,8 +5,8 @@
         :title="$t('favorites.pageTitle')"
         :link-text="$t('favorites.pageLinkText')"
       />
-      <Tabs />
-      <div> 
+      <TabsComponent />
+      <div>
         <GridBlock />
       </div>
     </div>
@@ -15,7 +15,7 @@
 
 <script lang="ts" setup>
 import GridBlock from "../../components/Recommended/GridBlock.vue";
-import Tabs from "../../components/Tabs/Tabs.vue";
+import TabsComponent from "../../components/TabsComponent/TabsComponent.vue";
 import PageTitle from "../../ui/PageTitle/PageTitle.vue";
 </script>
 

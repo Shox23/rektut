@@ -151,6 +151,10 @@
   },
   "favorites": {
     "pageTitle": "My favorites",
-    "pageLinkText": "Back"
+    "pageLinkText": "Back",
+    "work": "Work",
+    "housing": "Housing",
+    "services": "Services",
+    "cars": "Cars"
   }
 }

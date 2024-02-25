@@ -3,59 +3,13 @@
     <HeroSection />
     <InfoSection />
     <FactsSection />
-    <!-- <div class="about-page__container container">
-      <PageTitle
-        :title="$t('ourTeam.pageTitle')"
-        :link-text="$t('ourTeam.pageLinkText')"
-        @onClick="router.back"
-      />
-
-      <div class="about-page__info">
-        <div class="about-page__desc">
-          <h3 class="about-page__title">
-            {{ $t("ourTeam.titleFirst") }}
-            <span>
-              {{ $t("ourTeam.titleSecond") }}
-            </span>
-          </h3>
-          <p class="about-page__text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic sit
-            quibusdam facilis ex inventore repellat, quod laborum error mollitia
-            atque iusto id perspiciatis cum nobis, quos ullam harum.
-            Praesentium, corrupti? Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Nulla quam illum perferendis saepe voluptate,
-            fugiat non! Assumenda sint quae debitis.
-          </p>
-          <FilledButton>
-            <template #text>
-              {{ $t("ourTeam.btnTitle") }}
-            </template>
-          </FilledButton>
-        </div>
-
-        <div class="about-page__img">
-          <img src="/images/Bg.jpg" alt="image" />
-        </div>
-      </div>
-
-      <h3 class="about-page__lower-title">
-        {{ $t("ourTeam.lowerTitleFirst") }}
-        <span class="text-black">{{ $t("ourTeam.lowerTitleSecond") }}</span>
-        <span>{{ $t("ourTeam.lowerTitleThird") }}</span>
-      </h3>
-    </div> -->
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from "vue-router";
-import PageTitle from "../../ui/PageTitle/PageTitle.vue";
-import FilledButton from "../../ui/FilledButton/FilledButton.vue";
-import FactsSection from "./components/FactsSection.vue"
+import FactsSection from "./components/FactsSection.vue";
 import InfoSection from "./components/InfoSection.vue";
 import HeroSection from "./components/HeroSection.vue";
-
-const router = useRouter();
 </script>
 
 <style lang="scss" scoped>
@@ -65,7 +19,7 @@ const router = useRouter();
   font-weight: 500;
 }
 .about-page {
-  height: 100vh;
+  min-height: 100vh;
   // padding: 30px 0;
 
   &__container {

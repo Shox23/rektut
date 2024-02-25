@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import AboutSection from "./components/AboutSection/AboutSection.vue"
+import AboutSection from "./components/AboutSection/AboutSection.vue";
 import SearchSection from "./components/SearchSection/SearchSection.vue";
 import HeroSection from "./components/HeroSection/HeroSection.vue";
 import AdvertisementSection from "./components/AdvertisementSection/AdvertisementSection.vue";
@@ -17,7 +17,7 @@ import AdvertisementSection from "./components/AdvertisementSection/Advertisemen
 <style lang="scss">
 .main {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   // background: url("/images/Bg.jpg") no-repeat center;
   // background-size: cover;
