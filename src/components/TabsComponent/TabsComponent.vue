@@ -16,7 +16,7 @@
     </ul>
     <div class="tabs__wrapper">
       <div class="tabs__content" :class="[{ in: slideIn }, { out: slideOut }]">
-        {{ tabsItems[activeItem].content }}
+        <slot name="content" />
       </div>
       <!-- <Transition name="slide-up" mode="out-in"> -->
       <!-- </Transition> -->
@@ -71,6 +71,11 @@ const switchContent = (value: number) => {
     display: flex;
     align-items: center;
     gap: 50px;
+
+    @media (max-width: 576px) {
+      flex-wrap: wrap;
+      gap: 20px 30px;
+    }
   }
   &__item {
     font-weight: 600;
@@ -104,7 +109,7 @@ const switchContent = (value: number) => {
   }
 
   &__wrapper {
-    overflow: hidden;
+    // overflow: hidden;
   }
 }
 
