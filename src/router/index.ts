@@ -55,6 +55,16 @@ const router = createRouter({
       component: () => import("../pages/AnswersPage/index.vue"),
     },
     {
+      name: "My ads",
+      path: "/my-ads",
+      component: () => import("../pages/MyAdsPage/index.vue"),
+    },
+    {
+      name: "Ads create",
+      path: "/my-ads/create",
+      component: () => import("../pages/MyAdsPage/pages/AdCreatePage.vue"),
+    },
+    {
       name: "NotFound",
       path: "/:pathMatch(.*)*",
       component: () => import("../pages/NotFound/index.vue"),

@@ -15,7 +15,7 @@
 
     <router-link
       class="right-block__favourites"
-      to="/profile"
+      to="/favorites"
       v-if="adaptiveStore.screenState === AdaptiveState.mobile"
     >
       <img src="/icons/navigation/nav_heart.svg" alt="icon" />

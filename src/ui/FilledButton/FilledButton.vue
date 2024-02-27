@@ -1,5 +1,6 @@
 <template>
   <button
+    @click="$emit('onClick')"
     class="filled-btn"
     :class="[
       { bigger: bigger },
@@ -10,6 +11,7 @@
       { cardBtn },
       { profilePage },
       { mainSection },
+      { notFoundBlock },
     ]"
     v-ripple
   >
@@ -50,6 +52,17 @@ const emits = defineEmits<FilledButtonEmits>();
 
   &.fullWidth {
     width: 100%;
+  }
+
+  &.notFoundBlock {
+    padding: 25px 40px;
+    font-size: 30px;
+    font-weight: 700;
+
+    @media (max-width: 768px) {
+      padding: 15px 25px;
+      @include adaptiv-fontmd(30, 20);
+    }
   }
 
   &.mainSection {

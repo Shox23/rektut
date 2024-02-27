@@ -48,3 +48,9 @@ export interface DescriptionBlock {
   trailing: string;
   wrapperFilled?: boolean;
 }
+
+export interface NotFoundProps {
+  title: string
+  text: string
+  btnText: string
+}

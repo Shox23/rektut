@@ -71,6 +71,7 @@ const switchContent = (value: number) => {
     display: flex;
     align-items: center;
     gap: 50px;
+    margin-bottom: 30px;
 
     @media (max-width: 576px) {
       flex-wrap: wrap;

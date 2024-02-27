@@ -9,6 +9,7 @@ export interface FilledButtonProps {
   fullHeight?: boolean;
   profilePage?: boolean;
   mainSection?: boolean;
+  notFoundBlock?: boolean
 }
 
 export interface FilledButtonEmits {

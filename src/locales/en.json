@@ -150,12 +150,33 @@
     "pageLinkText": "Back"
   },
   "favorites": {
-    "blockTitle": "advertisements found",
+    "recommended": "Recommended for you",
+    "notFoundTitle": "There are no favorites yet",
+    "notFoundText": "Lets add the first announcement!",
+    "notFoundBtnText": "Go to catalogue",
+    "blockTitle": "Advertisements found",
     "pageTitle": "My favorites",
     "pageLinkText": "Back",
     "work": "Work",
     "housing": "Housing",
     "services": "Services",
     "cars": "Cars"
+  },
+  "myAds": {
+    "pageTitle": "My Ads",
+    "pageLinkText": "Back",
+    "createAnAd": "Create an ad",
+    "dontHaveAds": "You don't have ads yet",
+    "addBtnText": "Add advertisement",
+    "createModalTitle": "Create ad",
+    "modalSectionChooseTitle": "Select a section",
+    "modalWorkSectionTitle": "Work",
+    "modalWorkSectionSubtitle": "Dream employees on rektut",
+    "modalCarsSectionTitle": "Cars",
+    "modalCarsSectionSubtitle": "Not broken not painted",
+    "modalBusinessSectionTitle": "Business",
+    "modalBusinessSectionSubtitle": "Advertise your business and services",
+    "modalAppartmentsSectionTitle": "Appartments",
+    "modalAppartmentsSectionSubtitle": "Rent and rent out"
   }
 }

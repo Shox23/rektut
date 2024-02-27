@@ -1,7 +1,11 @@
 <template>
   <nav class="desktop-nav">
     <div>
-      <FilledButton :font-default="true" icon="plus-white.svg">
+      <FilledButton
+        @on-click="router.push('/my-ads')"
+        :font-default="true"
+        icon="plus-white.svg"
+      >
         <template #text>
           {{ $t("navbar.mainButtonText") }}
         </template>
@@ -42,9 +46,10 @@
 <script setup lang="ts">
 import NavbarRightBlock from "./NavbarRightBlock.vue";
 import FilledButton from "../../../ui/FilledButton/FilledButton.vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
+const router = useRouter();
 const menuItems = [
   {
     link: "/",
