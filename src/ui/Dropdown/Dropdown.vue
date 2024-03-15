@@ -1,9 +1,13 @@
 <template>
-  <div class="dropdown" :class="{ opened: isOpen }">
+  <div class="dropdown" :class="[{ opened: isOpen }, { filled }]">
     <div class="dropdown__header" @click="isOpen = !isOpen">
-      <p class="dropdown__title">{{ title }}</p>
+      <p class="dropdown__title">{{ activeItem ? activeItem : title }}</p>
       <span class="dropdown__icon" :class="{ opened: isOpen }">
-        <img src="/icons/arrow-circle-down.svg" alt="icon" />
+        <img
+          loading="lazy"
+          :src="`/icons/${filled ? 'chevron_down' : 'arrow-circle-down'}.svg`"
+          alt="icon"
+        />
       </span>
     </div>
     <Transition
@@ -13,8 +17,13 @@
       @after-enter="afterEnter"
     >
       <ul class="dropdown__list" v-if="isOpen">
-        <li class="dropdown__item" v-for="item in list" :key="item">
-          {{ item }}
+        <li
+          @click="chooseItem(item.id)"
+          class="dropdown__item"
+          v-for="item in list"
+          :key="item.id"
+        >
+          {{ typeof item === "string" ? item : item.name }}
         </li>
       </ul>
     </Transition>
@@ -23,10 +32,22 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { DropdownProps } from "./interfaces";
+import { DropdownProps, DropdownEmits } from "./interfaces";
 
-defineProps<DropdownProps>();
+const props = defineProps<DropdownProps>();
 const isOpen = ref<boolean>(false);
+const activeItem = ref<any>(null);
+const emit = defineEmits<DropdownEmits>();
+
+const chooseItem = (id: number) => {
+  emit("choose", id);
+  if (props.list) {
+    let idx = props.list.findIndex((item) => item.id === id);
+    activeItem.value = props.list[idx].name;
+  }
+  isOpen.value = false;
+  console.log(activeItem.value);
+};
 
 const enter = (element: Element) => {
   const el = element as HTMLElement;
@@ -68,6 +89,10 @@ const leave = (element: Element) => {
     @include adaptivPaddingmd(16, 16, 16, 16, 12, 12, 12, 12);
   }
 
+  &.filled {
+    background: #e6e6e6;
+  }
+
   &.opened {
     border-radius: 8px 8px 0 0;
     .dropdown__icon {
@@ -98,7 +123,7 @@ const leave = (element: Element) => {
   &__list {
     position: absolute;
     // top: 50px;
-    z-index: 10;
+    z-index: 20;
     left: 0;
     width: 100%;
     border-radius: 0 0 8px 8px;

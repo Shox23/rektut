@@ -25,6 +25,7 @@ const adaptiveStore = useAdaptiveStore();
 
 <style lang="scss" scoped>
 .navbar {
+  animation: var(--top-append-animation);
   &.alt {
     position: absolute;
     width: 100%;

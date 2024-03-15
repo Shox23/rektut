@@ -29,7 +29,10 @@
 
       <div class="filter-block__controls">
         <Dropdown :list="cities" :title="$t('filterBlock.workType')" />
-        <Dropdown :list="cities" :title="$t('filterBlock.workCity')" />
+        <Dropdown
+          :list="locationStore.allCities"
+          :title="$t('filterBlock.workCity')"
+        />
         <FilledButton
           :full-height="
             adaptStore.screenState === AdaptiveState.desktop ? true : false
@@ -55,9 +58,12 @@ import FilledButton from "../../ui/FilledButton/FilledButton.vue";
 import { FilterBlockProps } from "./interfaces";
 import { useAdaptiveStore } from "../../store/adaptive";
 import AdaptiveState from "../../helpers/enums/adaptiveEnum";
+import { useLocationStore } from "../../store/location";
+import { useCategoriesStore } from "../../store/categories";
 
 defineProps<FilterBlockProps>();
-
+const locationStore = useLocationStore();
+const categoriesStore = useCategoriesStore();
 const cities = ["Tashkent", "Moscow", "Dublin", "Seul"];
 const adaptStore = useAdaptiveStore();
 </script>

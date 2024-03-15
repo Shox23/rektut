@@ -20,19 +20,31 @@
     </div>
 
     <div class="card-block__list">
-      <ProductCard v-for="item in 5" :key="item" />
+      <ProductCard v-for="item in adsStore.adList" :key="item.id" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { onMounted } from "vue";
 import AdaptiveState from "../../helpers/enums/adaptiveEnum";
 import { CardBlockProps } from "../../models/models";
 import { useAdaptiveStore } from "../../store/adaptive";
+import { useAdsStore } from "../../store/ads";
 import ProductCard from "../../ui/ProductCard/ProductCard.vue";
-defineProps<CardBlockProps>();
 
+const props = withDefaults(defineProps<CardBlockProps>(), {
+  status: "none",
+});
+
+const adsStore = useAdsStore();
 const adaptStore = useAdaptiveStore();
+
+onMounted(() => {
+  if (!adsStore.adList) {
+    adsStore.getAllAds();
+  }
+});
 </script>
 
 <style lang="scss" scoped>

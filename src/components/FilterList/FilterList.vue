@@ -1,18 +1,22 @@
 <template>
-  <div class="filter-list">
+  <div class="filter-list" v-if="categoriesStore.allCategories">
     <div class="filter-list__full" v-if="fullFilter">
-      <li class="filter-list__item" v-for="item in 20" :key="item">
-        <ListItem icon="export.svg" :circle="true" title="Somethin" />
+      <li
+        class="filter-list__item"
+        v-for="item in categoriesStore.allCategories"
+        :key="item.id"
+      >
+        <ListItem :icon="item.icon" hide-title circle :title="item.name" />
       </li>
     </div>
 
     <div class="filter-list__short" v-else>
       <ListItem
-        v-for="item in 7"
-        :key="item"
-        icon="export.svg"
+        v-for="item in categoriesStore.allCategories"
+        :key="item.id"
+        :icon="item.icon"
         :circle="false"
-        title="Somethin"
+        :title="item.name"
       />
       <FilledButton :full-height="true">
         <template #text> All </template>
@@ -25,7 +29,18 @@
 import { FilterListProps } from "../../models/models";
 import ListItem from "./components/ListItem.vue";
 import FilledButton from "../../ui/FilledButton/FilledButton.vue";
+import { onMounted } from "vue";
+import { useCategoriesStore } from "../../store/categories";
+
 defineProps<FilterListProps>();
+const categoriesStore = useCategoriesStore();
+
+onMounted(() => {
+  // console.log(!categoriesStore.allCategories);
+  // if (!categoriesStore.allCategories && categoriesStore.loading) {
+  categoriesStore.getCategories();
+  // }
+});
 </script>
 
 <style lang="scss" scoped>

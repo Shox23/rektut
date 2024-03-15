@@ -91,6 +91,7 @@ const adaptStore = useAdaptiveStore();
 
   &__icon {
     height: 34px;
+    animation: var(--glow-animation);
     width: 34px;
 
     @media (max-width: 475px) {

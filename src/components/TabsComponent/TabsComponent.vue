@@ -1,19 +1,31 @@
 <template>
   <div class="tabs">
-    <ul class="tabs__header">
-      <li
-        class="tabs__item"
-        :class="{ active: idx === activeItem }"
-        v-for="(item, idx) in tabsItems"
-        :key="idx"
-        @click="switchContent(idx)"
+    <div class="tabs__controls">
+      <ul class="tabs__header">
+        <li
+          class="tabs__item"
+          :class="{ active: item.id === activeItem }"
+          v-for="item in tabsItems"
+          :key="item.id"
+          @click="switchContent(item.id)"
+        >
+          <span class="tabs__item__text">
+            {{ $t(`${item.name}`) }}
+          </span>
+          <span class="tabs__item__count">0</span>
+        </li>
+      </ul>
+      <FilledButton
+        v-if="titleButton"
+        @on-click="$emit('btnClick')"
+        :font-default="true"
+        icon="plus-white.svg"
       >
-        <span class="tabs__item__text">
-          {{ $t(`${item.header}`) }}
-        </span>
-        <span class="tabs__item__count">0</span>
-      </li>
-    </ul>
+        <template #text>
+          {{ $t("navbar.mainButtonText") }}
+        </template>
+      </FilledButton>
+    </div>
     <div class="tabs__wrapper">
       <div class="tabs__content" :class="[{ in: slideIn }, { out: slideOut }]">
         <slot name="content" />
@@ -26,28 +38,14 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import FilledButton from "../../ui/FilledButton/FilledButton.vue";
+import { TabsEmits, TabsProps } from "../../models/models";
 
+const props = defineProps<TabsProps>();
+const emits = defineEmits<TabsEmits>();
 const slideIn = ref<boolean>(false);
 const slideOut = ref<boolean>(false);
 const activeItem = ref<number>(0);
-const tabsItems = [
-  {
-    header: "favorites.work",
-    content: "work",
-  },
-  {
-    header: "favorites.housing",
-    content: "housing",
-  },
-  {
-    header: "favorites.services",
-    content: "services",
-  },
-  {
-    header: "favorites.cars",
-    content: "cars",
-  },
-];
 
 const switchContent = (value: number) => {
   if (activeItem.value < value) {
@@ -62,16 +60,25 @@ const switchContent = (value: number) => {
     }, 300);
   }
   activeItem.value = value;
+  const index = props.tabsItems.findIndex((item) => item.id === value);
+  const chosenData = props.tabsItems[index].name;
+  emits("switch", chosenData);
 };
 </script>
 
 <style lang="scss" scoped>
 .tabs {
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
   &__header {
     display: flex;
     align-items: center;
     gap: 50px;
-    margin-bottom: 30px;
 
     @media (max-width: 576px) {
       flex-wrap: wrap;

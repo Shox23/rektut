@@ -26,8 +26,7 @@ export interface CustomInputProps {
   colored?: boolean;
   maxlength?: number;
   staticPadding?: boolean;
-  // multiline?: boolean,
-  // money?: boolean
+  isTextarea?: boolean;
 }
 
 export interface CustomInputEmits {

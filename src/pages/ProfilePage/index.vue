@@ -6,7 +6,7 @@
         :linkText="$t('profilePage.backLink')"
         @onClick="router.back"
       />
-      <ProfileDetails />
+      <ProfileDetails  />
       <DescriptionBlock
         date="12.12.2024"
         :title="$t('profilePage.personalInfoTitle')"
@@ -38,8 +38,15 @@ import PageTitle from "../../ui/PageTitle/PageTitle.vue";
 import ProfileDetails from "./components/ProfileDetails/ProfileDetails.vue";
 import DescriptionBlock from "../../ui/DescriptionBlock/DescriptionBlock.vue";
 import SocialLinks from "./components/SocialLinks/SocialLinks.vue";
+import { useProfileStore } from "./store";
+import { onMounted } from "vue";
 
 const router = useRouter();
+const profileStore = useProfileStore();
+
+onMounted(() => {
+  profileStore.getCurrentProfile();
+});
 </script>
 
 <style lang="scss" scoped>

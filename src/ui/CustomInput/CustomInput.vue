@@ -11,7 +11,20 @@
     <span class="custom-input__icon" v-if="icon">
       <img :src="`/icons/${icon}`" alt="icon" />
     </span>
+    <textarea
+      v-if="isTextarea"
+      class="custom-input__field"
+      :placeholder="placeholder"
+      :readonly="readonly"
+      v-model="modelValue"
+      rows="8"
+      :type="type"
+      :inputmode="inputmode"
+      :maxlength="maxlength"
+      :autofocus="autofocus"
+    />
     <input
+      v-else
       class="custom-input__field"
       :placeholder="placeholder"
       :readonly="readonly"
@@ -83,6 +96,7 @@ const modelValue = defineModel();
   }
 
   &__field {
+    resize: none;
     background: inherit;
     font-family: var(--primary-font);
     width: 100%;

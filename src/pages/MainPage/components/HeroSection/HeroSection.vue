@@ -55,6 +55,7 @@ const adaptStore = useAdaptiveStore();
   &__icon {
     position: absolute;
     left: 50%;
+    animation: var(--glow-animation);
     transform: translateX(-50%);
     bottom: 10%;
     height: 20px;
@@ -104,6 +105,7 @@ const adaptStore = useAdaptiveStore();
   }
 
   &__controls {
+    animation: var(--bottom-append-animation);
     width: 100%;
   }
 

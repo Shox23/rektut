@@ -1,7 +1,7 @@
 <template>
   <div class="desc-block" :class="{ filled: wrapperFilled }">
-    <PageTitle :title="title" :lower="true" />
-    <div class="desc-block__content">
+    <PageTitle v-if="title" :title="title" :lower="true" />
+    <div v-if="!empty" class="desc-block__content">
       <div class="desc-block__wrapper">
         <div class="desc-block__upper">
           <slot name="upper-text" />
@@ -11,15 +11,16 @@
         </div>
       </div>
       <div class="desc-block__details">
-        <div class="desc-block__leading">
+        <div class="desc-block__leading" v-if="leading">
           {{ leading }}
         </div>
-        <div class="desc-block__trailing">
+        <div class="desc-block__trailing" v-if="trailing || date">
           <span>{{ trailing }}</span>
           <time v-if="date">{{ date }}</time>
         </div>
       </div>
     </div>
+    <slot name="custom" />
   </div>
 </template>
 <script setup lang="ts">

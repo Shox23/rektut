@@ -4,9 +4,10 @@
       {{ $t("loginPage.login.mainTitle") }}
     </h3>
     <div class="login-form__content">
-      <form action="" class="login-form__form">
+      <form @submit.prevent class="login-form__form">
         <CustomInput
           icon="user.svg"
+          v-model="userData"
           :placeholder="$t('loginPage.login.mainPhoneLabel')"
         />
         <CustomInput
@@ -15,10 +16,9 @@
           v-model="passwordInputValue"
           :type="inputPassword ? 'text' : 'password'"
           @onIconClick="inputPassword = !inputPassword"
-          @updateData="updateInputData"
           :placeholder="$t('loginPage.login.passwordLabel')"
         />
-        <FilledButton :bigger="true">
+        <FilledButton @onClick="login" :bigger="true">
           <template #text>
             {{ $t("loginPage.login.mainButtonTitle") }}
           </template>
@@ -74,13 +74,33 @@ import { useLoginStore } from "../../store/loginStore";
 import CustomInput from "../../../../ui/CustomInput/CustomInput.vue";
 import FilledButton from "../../../../ui/FilledButton/FilledButton.vue";
 import WhiteButton from "../../../../ui/WhiteButton/WhiteButton.vue";
+import { useAuthStore } from "../../../../store/auth";
+import router from "../../../../router";
 
 const inputPassword = ref<boolean>(false);
+const userData = ref<string>("");
 const passwordInputValue = ref<string>("");
 const loginStore = useLoginStore();
+const authStore = useAuthStore();
 
-const updateInputData = (val: string) => {
-  passwordInputValue.value = val;
+const login = async() => {
+  if (!userData.value) {
+    alert("Phone Input is empty");
+  }
+  if (!passwordInputValue.value) {
+    alert("Password Input is empty");
+  } else {
+    const form = {
+      phone: userData.value,
+      password: passwordInputValue.value,
+    };
+    const response = await authStore.login(form);
+    if(response) {
+      router.push("/")
+    }else {
+      
+    }
+  }
 };
 </script>
 

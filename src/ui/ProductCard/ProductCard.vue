@@ -36,6 +36,8 @@
 <script setup lang="ts">
 import FilledButton from "../FilledButton/FilledButton.vue";
 import OutlinedButton from "../OutlinedButton/OutlinedButton.vue";
+import { ProductCardProps } from "./interfaces";
+defineProps<ProductCardProps>()
 </script>
 
 <style lang="scss" scoped>

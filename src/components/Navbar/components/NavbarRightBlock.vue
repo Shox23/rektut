@@ -48,11 +48,11 @@
           <ul class="right-block__cities">
             <li
               class="right-block__city"
-              :class="{ active: activeCity === item }"
-              v-for="item in citiesList"
-              :key="item"
+              :class="{ active: locationStore.currentCity === item.name }"
+              v-for="item in locationStore.allCities"
+              :key="item.id"
             >
-              {{ item }}
+              {{ item.name }}
             </li>
           </ul>
           <div class="right-block__modal__btn">
@@ -69,16 +69,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import AdaptiveState from "../../../helpers/enums/adaptiveEnum";
 import { useAdaptiveStore } from "../../../store/adaptive";
 import Modal from "../../../ui/Modal/Modal.vue";
 import FilledButton from "../../../ui/FilledButton/FilledButton.vue";
+import { useLocationStore } from "../../../store/location";
 
 const adaptiveStore = useAdaptiveStore();
 const modalOpen = ref<boolean>(false);
 const activeLang = ref<string>("en");
-const activeCity = ref<string>("Tashkent");
+const locationStore = useLocationStore();
 
 const currentLanguages = [
   {
@@ -99,24 +100,14 @@ const currentLanguages = [
   },
 ];
 
-const citiesList = [
-  "Istanbul",
-  "Ankara",
-  "Tashkent",
-  "Samarkand",
-  "Moscow",
-  "St-Petersburg",
-  "Warsaw",
-  "Krakow",
-  "London",
-  "Manchester",
-  "Berlin",
-  "Torino",
-  "Rome",
-  "Frankfurt",
-  "Geneve",
-  "Paris",
-];
+const setCurrentLocation = () => {
+  locationStore.getCities();
+  locationStore.getCountries();
+};
+
+onMounted(() => {
+  setCurrentLocation();
+});
 </script>
 
 <style lang="scss" scoped>

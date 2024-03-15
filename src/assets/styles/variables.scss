@@ -15,4 +15,9 @@
     saturate(24%) hue-rotate(142deg) brightness(105%) contrast(107%);
   --brand-filter: brightness(0) saturate(100%) invert(23%) sepia(92%)
     saturate(2261%) hue-rotate(209deg) brightness(98%) contrast(98%);
+
+  --glow-animation: 3s glowing infinite;
+  --top-append-animation: 1s appendFromTop;
+  --bottom-append-animation: 1s appendFromBottom;
 }
+

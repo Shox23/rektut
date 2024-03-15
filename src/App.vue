@@ -18,7 +18,7 @@
     <div class="app__content">
       <router-view />
     </div>
-    <Footer />
+    <Footer v-if="!route.fullPath.includes('/log-in')" />
   </div>
 </template>
 
@@ -31,10 +31,16 @@ import Navbar from "./components/Navbar/Navbar.vue";
 import MobileMenu from "./components/Navbar/components/MobileMenu.vue";
 import AdaptiveState from "./helpers/enums/adaptiveEnum";
 import Footer from "./components/Footer/Footer.vue";
+import { useAdsStore } from "./store/ads";
+import { useAuthStore } from "./store/auth";
+// import { useAuthStore } from "./store/auth";
 
+// const authStore = useAuthStore();
+const adsStore = useAdsStore();
 const route = useRoute();
 const langStore = useLanguageStore();
 const adaptiveStore = useAdaptiveStore();
+const authStore = useAuthStore();
 
 const enter = (element: Element) => {
   const el = element as HTMLElement;
@@ -62,11 +68,19 @@ const leave = (element: Element) => {
 };
 
 onMounted(() => {
+  // adsStore.getAllAds();
   adaptiveStore.setScreenValue(window.innerWidth);
   window.addEventListener("resize", () => {
     adaptiveStore.setScreenValue(window.innerWidth);
   });
   langStore.getDefaultLanguage();
+
+  if (localStorage.accessToken && localStorage.refreshToken) {
+    authStore.setAuth(true);
+  } else {
+    authStore.setAuth(false);
+  }
+  console.log(authStore.isAuth);
 });
 </script>
 

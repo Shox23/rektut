@@ -1,6 +1,6 @@
 <template>
   <div class="ads-btn">
-    <button @click="$emits('onClick')" class="ads-btn__btn">
+    <button @click="$emit('onClick')" class="ads-btn__btn">
       <span class="ads-btn__icon">
         <img src="/icons/plus.svg" alt="icon" />
       </span>
@@ -12,7 +12,9 @@
 </template>
 
 <script setup lang="ts">
-const emits = defineEmits(["onClick"]);
+import { EmptyAdsButtonEmits } from "../../../models/models";
+
+const emits = defineEmits<EmptyAdsButtonEmits>();
 </script>
 
 <style lang="scss" scoped>

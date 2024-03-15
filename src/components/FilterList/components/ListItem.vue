@@ -3,12 +3,12 @@
     <div class="list-item__circle" :class="{ active: isActive }" v-if="circle">
       <div class="list-item__circle__body">
         <span class="list-item__circle__logo">
-          <img :src="`/icons/${icon}`" alt="icon" />
+          <img :src="icon" alt="icon" loading="lazy" />
         </span>
       </div>
       <p
         class="list-item__circle__title"
-        v-if="adaptStore.screenState === AdaptiveState.desktop"
+        v-if="adaptStore.screenState === AdaptiveState.desktop && !hideTitle"
       >
         {{ title }}
       </p>
@@ -21,7 +21,7 @@
       v-else
     >
       <span class="list-item__square__logo">
-        <img :src="`/icons/${icon}`" alt="icon" />
+        <img :src="icon" alt="icon" loading="lazy" />
       </span>
     </div>
   </div>

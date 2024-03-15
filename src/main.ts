@@ -25,6 +25,6 @@ const i18n = VueI18n.createI18n({
 
 app.directive("ripple", Ripple);
 app.use(createPinia());
-app.use(i18n);
 app.use(router);
+app.use(i18n);
 app.mount("#app");

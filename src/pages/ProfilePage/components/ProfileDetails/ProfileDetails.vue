@@ -7,19 +7,44 @@
     <div class="profile-details__data">
       <div class="profile-details__inputs">
         <CustomInput
+          v-model="firstNameValue"
           :colored="true"
           :static-padding="true"
-          :placeholder="$t('profilePage.namePlaceholder')"
+          :placeholder="
+            profileStore.profileData && profileStore.profileData.first_name
+              ? profileStore.profileData.first_name
+              : $t('profilePage.firstNamePlaceholder')
+          "
         />
         <CustomInput
+          v-model="lastNameValue"
           :colored="true"
           :static-padding="true"
-          :placeholder="$t('profilePage.numberPlaceholder')"
+          :placeholder="
+            profileStore.profileData && profileStore.profileData.last_name
+              ? profileStore.profileData.last_name
+              : $t('profilePage.lastNamePlaceholder')
+          "
         />
         <CustomInput
+          v-model="phoneValue"
           :colored="true"
           :static-padding="true"
-          :placeholder="$t('profilePage.emailPlaceholder')"
+          :placeholder="
+            profileStore.profileData && profileStore.profileData.phone
+              ? profileStore.profileData.phone
+              : $t('profilePage.numberPlaceholder')
+          "
+        />
+        <CustomInput
+          v-model="emailValue"
+          :colored="true"
+          :static-padding="true"
+          :placeholder="
+            profileStore.profileData && profileStore.profileData.email
+              ? profileStore.profileData.email
+              : $t('profilePage.emailPlaceholder')
+          "
         />
       </div>
 
@@ -32,6 +57,7 @@
 
       <div class="profile-details__controls">
         <FilledButton
+          @on-click="editProfile"
           :profile-page="true"
           :full-width="
             adaptStore.screenState === AdaptiveState.mobile ? true : false
@@ -65,12 +91,54 @@ import OutlinedButton from "../../../../ui/OutlinedButton/OutlinedButton.vue";
 import Checkbox from "../../../../ui/Checkbox/Checkbox.vue";
 import { useAdaptiveStore } from "../../../../store/adaptive";
 import AdaptiveState from "../../../../helpers/enums/adaptiveEnum";
+import { useProfileStore } from "../../store";
 
+const profileStore = useProfileStore();
 const adaptStore = useAdaptiveStore();
-const isChecked = ref<boolean>(false);
+const isChecked = ref<boolean>(
+  profileStore.profileData ? profileStore.profileData.is_agree_terms : false
+);
+const emailValue = ref<string>("");
+const phoneValue = ref<string>("");
+const lastNameValue = ref<string>("");
+const firstNameValue = ref<string>("");
 
 const handleCheckValue = (val: boolean) => {
   isChecked.value = val;
+};
+
+const editProfile = () => {
+  const form = new FormData();
+
+  // SET LAST NAME
+  if (lastNameValue.value.trim()) {
+    form.append("last_name", lastNameValue.value);
+  } else if (profileStore.profileData && profileStore.profileData.last_name) {
+    form.append("last_name", profileStore.profileData.last_name);
+  }
+
+  // SET FIRST NAME
+  if (firstNameValue.value.trim()) {
+    form.append("first_name", firstNameValue.value);
+  } else if (profileStore.profileData && profileStore.profileData.first_name) {
+    form.append("first_name", profileStore.profileData.first_name);
+  }
+
+  // SET PHONE NUMBER
+  if (phoneValue.value.trim()) {
+    form.append("phone", emailValue.value);
+  } else if (profileStore.profileData && profileStore.profileData.phone) {
+    form.append("phone", profileStore.profileData.phone);
+  }
+
+  // SET EMAIL
+  if (phoneValue.value.trim()) {
+    form.append("email", emailValue.value);
+  } else if (profileStore.profileData && profileStore.profileData.email) {
+    form.append("email", profileStore.profileData.email);
+  }
+
+  profileStore.editCurrentProfile(form);
 };
 </script>
 

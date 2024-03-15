@@ -1,4 +1,9 @@
 export interface DropdownProps {
-  list: string[];
-  title: string
+  list: any[] | null;
+  title: string;
+  filled?: boolean;
+}
+
+export interface DropdownEmits {
+  (e: "choose", value: number): void;
 }
